@@ -24,14 +24,13 @@ def parse_season() -> dict[str, float]:
         "1": "spring",
         "2": "summer",
         "3": "autumn",
-        "4": "fall",
     }
     season_key = num_map.get(arg, arg)
 
     if season_key not in SEASONS:
         print(
             f"Error: Invalid season '{sys.argv[1]}'."
-            f"Choose winter, spring, summer, fall, or autumn."
+            f"Choose winter, spring, summer or autumn."
         )
         sys.exit(1)
 
@@ -39,7 +38,7 @@ def parse_season() -> dict[str, float]:
 
 
 def simulate_day(config: dict[str, float]) -> None:
-    total_slices = 42  # 24 hours * 2 (30 min slices)
+    total_slices = 48  # 24 hours * 2 (30 min slices)
 
     for slices_index in range(total_slices):
         radians = (slices_index - 18) * (2 * math.pi / total_slices)
@@ -49,7 +48,7 @@ def simulate_day(config: dict[str, float]) -> None:
         current_temp = round(base_temp + noise, 1)
 
         print(f"{current_temp}", flush=True)
-        time.sleep(.1)
+        time.sleep(1)
 
 
 def main() -> None:
