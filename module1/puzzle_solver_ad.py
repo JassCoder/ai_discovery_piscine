@@ -196,7 +196,7 @@ def solve_puzzle(
     if shortest_path is None:
         return None
 
-    if first_path is None or first_path != shortest_path:
+    if first_path is None or len(first_path) != len(shortest_path):
         print(f"Solving in {len(shortest_path)} moves")
 
     return shortest_path
