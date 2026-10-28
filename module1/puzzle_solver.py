@@ -51,6 +51,18 @@ def get_valid_moves(state: tuple[int, ...]) -> list[int]:
     return moves
 
 
+def make_move(
+    state: tuple[int, ...], target_index: int) -> tuple[int, ...]:
+    numbers = list(state)
+    zero_index = numbers.index(0)
+
+    numbers[zero_index], numbers[target_index] = (
+        numbers[target_index], numbers[zero_index]
+    )
+
+    return tuple(numbers)
+
+
 def main() -> None:
     initial_state = generate_puzzle()
 
