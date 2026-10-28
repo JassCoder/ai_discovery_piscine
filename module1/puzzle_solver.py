@@ -1,25 +1,30 @@
+
 import random
 
+
 GOAL = (1, 2, 3, 4, 5, 6, 7, 8, 0)
+
 
 def generate_puzzle() -> tuple[int, ...]:
     numbers = list(range(9))
     random.shuffle(numbers)
     return tuple(numbers)
 
+
 def display_puzzle(state: tuple[int, ...]) -> None:
     for i in range(0, 9, 3):
         print(*state[i:i + 3])
 
 
-def count_inversions(state: tuple[int, ...]):
+def count_inversions(state: tuple[int, ...]) -> int:
     inversions = 0
-    
+
     for i in range(9):
         for j in range(i + 1, 9):
             if state[i] != 0 and state[j] != 0:
                 if state[i] > state[j]:
                     inversions += 1
+
     return inversions
 
 
@@ -52,12 +57,14 @@ def get_valid_moves(state: tuple[int, ...]) -> list[int]:
 
 
 def make_move(
-    state: tuple[int, ...], target_index: int) -> tuple[int, ...]:
+    state: tuple[int, ...], target_index: int
+) -> tuple[int, ...]:
     numbers = list(state)
     zero_index = numbers.index(0)
 
     numbers[zero_index], numbers[target_index] = (
-        numbers[target_index], numbers[zero_index]
+        numbers[target_index],
+        numbers[zero_index],
     )
 
     return tuple(numbers)
@@ -77,6 +84,7 @@ def main() -> None:
 
     print("Puzzle is solvable!")
     print("Valid moves:", get_valid_moves(initial_state))
+
 
 if __name__ == "__main__":
     main()
