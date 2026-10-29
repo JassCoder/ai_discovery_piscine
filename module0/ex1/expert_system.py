@@ -12,6 +12,9 @@ def main() -> None:
     except ValueError:
         print("Error: It should be numeric value")
         sys.exit(1)
+    if min_temp > max_temp:
+        print("Error: minimum temperature must not exceed maximum temperature")
+        sys.exit(1)
 
     indoor_temp = None
     for line in sys.stdin:
@@ -19,7 +22,11 @@ def main() -> None:
         if not clean_line:
             continue
 
-        ext_temp = float(clean_line)
+        try:
+            ext_temp = float(clean_line)
+        except ValueError:
+            print(f"Error: invalid temperature '{clean_line}'", file=sys.stderr)
+            continue
         if indoor_temp is None:
             indoor_temp = ext_temp
 

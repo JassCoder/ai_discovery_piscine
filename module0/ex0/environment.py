@@ -14,7 +14,7 @@ SEASONS: dict[str, dict[str, float]] = {
 
 
 def parse_season() -> dict[str, float]:
-    if len(sys.argv) < 2:
+    if len(sys.argv) != 2:
         print("Usage: environment.py <season>")
         sys.exit(1)
 
@@ -30,7 +30,7 @@ def parse_season() -> dict[str, float]:
     if season_key not in SEASONS:
         print(
             f"Error: Invalid season '{sys.argv[1]}'."
-            f"Choose winter, spring, summer or autumn."
+            " Choose winter, spring, summer or autumn."
         )
         sys.exit(1)
 

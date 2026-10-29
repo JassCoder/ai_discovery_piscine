@@ -1,0 +1,2 @@
+# The Module 2 programs use Python's standard library HTTP client.
+# No third-party package is required.
